@@ -1,48 +1,35 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Reproducibility in R</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Florencia D’Andrea" />
+    <meta name="date" content="2020-09-03" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Reproducibility in R
+## Sharing interactive environments with Binder
+### Florencia D’Andrea
+### 2020-09-03
+
 ---
-title: "Reproducibility in R"
-subtitle: "Sharing interactive environments with Binder"  
-author: 
-  - "Florencia D'Andrea"
-date: '`r Sys.Date()`'
-output:
-  xaringan::moon_reader:
-    lib_dir: libs
-    css: xaringan-themer.css
-    nature:
-      highlightStyle: github
-      highlightLines: true
-      countIncrementalSlides: false
----
 
-```{r setup, include=FALSE}
-options(htmltools.dir.version = FALSE, echo = FALSE)
-```
 
-```{r xaringan-themer, include=FALSE, warning=FALSE}
-library(xaringanthemer)
-style_duo_accent(
-  primary_color = "#01CC99",
-  secondary_color = "#C3EBE2",
-    link_color= "#245239",
-  inverse_header_color = "#2E414D", 
-  code_inline_color = "#179c55",
-    code_font_family = "GlacialIndifferenceRegular",
-  code_font_url = "https://fontlibrary.org/face/glacial-indifference",
-  text_font_family = "GlacialIndifferenceRegular",
-  text_font_size = "25px",
-  text_font_url = "https://fontlibrary.org/face/glacial-indifference",
-  header_font_family = "Sifonn",
-  header_font_url = "https://fonts.cdnfonts.com/css/sifonn",
-)
 
-```
+
+
 
 
 class: center, middle
 
 
 
-<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+&lt;a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"&gt;&lt;img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /&gt;&lt;/a&gt;&lt;br /&gt;This work is licensed under a &lt;a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"&gt;Creative Commons Attribution-ShareAlike 4.0 International License&lt;/a&gt;
 
 
 
@@ -108,9 +95,7 @@ class: center
 
 **`renv` package**
 
-```{r echo = FALSE}
-knitr::include_graphics("images/renv.png")
-```
+![](images/renv.png)&lt;!-- --&gt;
 .footnote[[Reproducible Environments - RStudio](https://environments.rstudio.com/)]
 ---
 
@@ -156,9 +141,7 @@ class: center
 Binder is an open source web service that lets users create sharable, interactive, reproducible environments in the cloud.
 
 
-```{r echo = FALSE}
-knitr::include_graphics("images/binderlogo.png")
-```
+![](images/binderlogo.png)&lt;!-- --&gt;
 
 
 ---
@@ -199,9 +182,7 @@ class: inverse, middle, center
 
 A free, public BinderHub. Because it is public, you should not use it if your project requires personal or confidential information (such as passwords).
 
-```{r echo=FALSE}
-knitr::include_graphics("images/mybinder.png")
-```
+![](images/mybinder.png)&lt;!-- --&gt;
 
 
 
@@ -238,9 +219,10 @@ class: middle, center, inverse
 
 ## ➕📄 `install.R`  
 
-> This file should have listed all of the packages to be installed 
+&gt; This file should have listed all of the packages to be installed 
 
-```{r eval=FALSE, include=TRUE}
+
+```r
 install.packages("ggplot2")
 install.packages("shiny")
 ```
@@ -256,7 +238,7 @@ Since September 17th, 2014, the checkpoint server has been taking a daily snapsh
 
 
 --
-> ⚠ Non-CRAN packages, such as those available on GitHub, are not part of the snapshot process.
+&gt; ⚠ Non-CRAN packages, such as those available on GitHub, are not part of the snapshot process.
 --
 
 .footnote[[MRAN](https://mran.microsoft.com/)]
@@ -268,7 +250,8 @@ Since September 17th, 2014, the checkpoint server has been taking a daily snapsh
 ⏱  `checkpoint` package allows you to install packages as they existed on CRAN on a specific snapshot date as if you had a CRAN time machine.
 
 
-```{r eval=FALSE, include=TRUE}
+
+```r
 library(checkpoint)
 checkpoint("YYYY-MM-DD") 
 ```
@@ -280,12 +263,12 @@ checkpoint("YYYY-MM-DD")
 
 # ➕📄 `runtime.txt`
 
-> Specify the R and package versions used
+&gt; Specify the R and package versions used
 
 For this you must choose a date where the versions of your packages are captured in MRAN.
 
 
-**`r-version-<YYYY>-<MM>-<DD>`**
+**`r-version-&lt;YYYY&gt;-&lt;MM&gt;-&lt;DD&gt;`**
 
 
 [*READ HERE - Important about R versions*](https://github.com/binder-examples/r)
@@ -294,8 +277,9 @@ For this you must choose a date where the versions of your packages are captured
 # ➕📄 `runtime.txt`
 
 
-```{r eval=FALSE, include=TRUE}
-r-3.6-2020-08-20 #r-version-<YYYY>-<MM>-<DD>
+
+```r
+r-3.6-2020-08-20 #r-version-&lt;YYYY&gt;-&lt;MM&gt;-&lt;DD&gt;
 ```
 
 
@@ -307,9 +291,7 @@ r-3.6-2020-08-20 #r-version-<YYYY>-<MM>-<DD>
 # 2. Upload your code to the repository
 
 
-```{r echo = FALSE}
-knitr::include_graphics("images/repo_entorno.png")
-```
+![](images/repo_entorno.png)&lt;!-- --&gt;
 
 
 
@@ -322,7 +304,7 @@ a. Go to https://mybinder.org
 --
 
 b. Paste the repository URL 
-`https://github.com/<your-username>/<your-repository>`
+`https://github.com/&lt;your-username&gt;/&lt;your-repository&gt;`
 
 --
 
@@ -350,7 +332,7 @@ class: center, middle, inverse
 
 You should call the binderized project using this template link
 
-`https://mybinder.org/v2/gh/<user>/<repository>/<branch>?urlpath?rstudio`
+`https://mybinder.org/v2/gh/&lt;user&gt;/&lt;repository&gt;/&lt;branch&gt;?urlpath?rstudio`
 
 Example 🔗:
 http://mybinder.org/v2/gh/flor14/shiny_reproducibilidad_meetup/master?urlpath=rstudio
@@ -361,11 +343,11 @@ http://mybinder.org/v2/gh/flor14/shiny_reproducibilidad_meetup/master?urlpath=rs
 
 # Shiny app URL ✨
 
-➕**`?urlpath=shiny/<folder>/`**
+➕**`?urlpath=shiny/&lt;folder&gt;/`**
 
 You should call the binderized project using this template link
 
-`https://mybinder.org/v2/gh/<user>/<repository>/<branch>?urlpath=shiny/<folder>/`
+`https://mybinder.org/v2/gh/&lt;user&gt;/&lt;repository&gt;/&lt;branch&gt;?urlpath=shiny/&lt;folder&gt;/`
 
 Example 🔗:
 https://mybinder.org/v2/gh/flor14/shiny_reproducibilidad_meetup/master?urlpath=shiny/elipse/
@@ -461,3 +443,126 @@ Twitter [@cantoflor87](twitter.com/cantoflor_87)
 
 
 
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
